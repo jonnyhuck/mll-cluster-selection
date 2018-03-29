@@ -15,6 +15,9 @@ def deproject(p):
 	return longitude, latitude
 
 
+# INSERT YOUR GOOGLE MAPS STATIC API KEY HERE
+apikey = ""
+
 # get geodataframe
 gdf = gpd.read_file("../results2.shp")
 
@@ -32,4 +35,4 @@ print "ID | District | Longitude | Latitude | Get Map"
 print "---|---|---|---|---"
 for d in data:
 	lng, lat = deproject(Point(d[2]))
-	print str(d[0]) + "|" + str(d[1]) + "|" + str(lng) + "|" + str(lat) + "|[click here for map](" + "".join(["https://maps.googleapis.com/maps/api/staticmap?maptype=satellite&center=", str(lat), ",", str(lng), "&zoom=17&size=640x640&key=AIzaSyCSL-6VMcVSZFihEd3S2zl8_CFLVnTQIKU"]) + ")"
+	print str(d[0]) + "|" + str(d[1]) + "|" + str(lng) + "|" + str(lat) + "|[click here for map](" + "".join(["https://maps.googleapis.com/maps/api/staticmap?maptype=satellite&center=", str(lat), ",", str(lng), "&zoom=17&size=640x640&key=", apikey]) + ")"
